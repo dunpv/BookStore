@@ -1,0 +1,13 @@
+<div class="user-container" *ngIf="user(); else notLoggedIn">
+  <h2>Thông tin người dùng</h2>
+  <p><strong>Họ tên:</strong> {{ user()?.name }}</p>
+  <p><strong>Email:</strong> {{ user()?.email }}</p>
+  <p><strong>Số điện thoại:</strong> {{ user()?.phone }}</p>
+  <p *ngIf="user()?.address"><strong>Địa chỉ:</strong> {{ user()?.address }}</p>
+
+  <button (click)="logout()">Đăng xuất</button>
+</div>
+
+<ng-template #notLoggedIn>
+  <p>Bạn chưa đăng nhập. <a [routerLink]="['/login']">Đăng nhập ngay</a>.</p>
+</ng-template>

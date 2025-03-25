@@ -1,0 +1,21 @@
+<h2>Giỏ hàng của bạn</h2>
+
+<ul>
+  <li *ngFor="let item of cartItems(); let i = index" class="cart-item">
+    <img [src]="item.image" [alt]="item.title" class="cart-image" />
+    <div class="cart-info">
+      <h3>{{ item.title }}</h3>
+      <p>Giá: {{ item.price | number }} VND</p>
+      <div class="quantity-control">
+        <button (click)="updateQuantity(i, -1)">-</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="updateQuantity(i, 1)">+</button>
+      </div>
+      <p>Thành tiền: {{ item.price * item.quantity | number }} VND</p>
+      <button (click)="removeFromCart(i)">Xóa</button>
+    </div>
+  </li>
+</ul>
+
+<h3>Tổng số tiền: {{ totalPrice() | number }} VND</h3>
+<a (click)="checkout()" class="btn">Thanh toán</a>

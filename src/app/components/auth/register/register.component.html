@@ -1,0 +1,34 @@
+<div class="register-container">
+  <h2 class="register-title">Đăng Ký</h2>
+
+  <div class="input-group">
+    <label for="name">Họ và tên</label>
+    <input type="text" id="name" [(ngModel)]="user().name" />
+  </div>
+
+  <div class="input-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" [(ngModel)]="user().email" />
+  </div>
+
+  <div class="input-group">
+    <label for="phone">Số điện thoại</label>
+    <input type="text" id="phone" [(ngModel)]="user().phone" />
+  </div>
+
+  <div class="input-group">
+    <label for="address">Địa chỉ</label>
+    <input type="text" id="address" [(ngModel)]="user().address" />
+  </div>
+
+  <div class="input-group">
+    <label for="password">Mật khẩu</label>
+    <input type="password" id="password" [(ngModel)]="user().password" />
+  </div>
+
+  <button (click)="register()">Đăng Ký</button>
+  <div class="register-links">
+    <p>Đã có tài khoản?</p>
+    <a [routerLink]="'/login'">Đăng nhập</a>
+  </div>
+</div>

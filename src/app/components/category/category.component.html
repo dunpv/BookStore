@@ -1,0 +1,16 @@
+<div class="category-container">
+  <div
+    *ngFor="let category of categories()"
+    class="category-item"
+    (click)="goToCategory(category.id)"
+  >
+    <img [src]="category.image" [alt]="category.name" class="category-image" />
+    <div class="category-info">
+      <h3>{{ category.name }}</h3>
+      <p>{{ category.description }}</p>
+      <button class="view-books-btn" (click)="goToCategory(category.id)">
+        Xem sách
+      </button>
+    </div>
+  </div>
+</div>

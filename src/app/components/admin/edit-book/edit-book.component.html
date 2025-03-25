@@ -1,0 +1,19 @@
+<div class="edit-book">
+  <h2>Chỉnh sửa sách</h2>
+  <form (ngSubmit)="saveBook()">
+    <label>Tên sách:</label>
+    <input type="text" [(ngModel)]="book.title" name="title" required />
+
+    <label>Tác giả:</label>
+    <input type="text" [(ngModel)]="book.author" name="author" required />
+
+    <label>Giá:</label>
+    <input type="number" [(ngModel)]="book.price" name="price" required />
+
+    <label>Mô tả:</label>
+    <textarea [(ngModel)]="book.description" name="description"></textarea>
+
+    <button type="submit">Lưu</button>
+    <button type="button" (click)="cancel()">Hủy</button>
+  </form>
+</div>

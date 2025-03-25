@@ -1,0 +1,40 @@
+<!-- <app-banner></app-banner> -->
+
+<div class="home-container">
+  <h1>Chào mừng đến với Cửa hàng Sách</h1>
+  <p>Khám phá những cuốn sách hay nhất tại cửa hàng của chúng tôi!</p>
+
+  <!-- Danh mục sách -->
+  <app-category></app-category>
+
+  <div class="category-container">
+    <div
+      *ngFor="let category of categories()"
+      class="category-item"
+      (click)="filterByCategory(category.id)"
+      [class.active]="category.id === selectedCategoryId()"
+    >
+      <!-- {{ category.name }} -->
+    </div>
+  </div>
+
+  <!-- Thanh tìm kiếm -->
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Tìm kiếm sách..."
+    />
+    <button (click)="searchQuery.set(searchQuery().trim())">🔍</button>
+  </div>
+
+  <!-- Danh sách sách -->
+  <div class="book-list">
+    <div *ngFor="let book of filteredBooks()" class="book-item">
+      <h3>{{ book.title }}</h3>
+      <p>Tác giả: {{ book.author }}</p>
+      <p>Giá: {{ book.price | number : "1.0-2" }} VND</p>
+      <a [routerLink]="['/book', book.id]" class="btn">Xem chi tiết</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="book-management">
+  <h2>Quản lý Sách</h2>
+
+  <!-- Thanh tìm kiếm -->
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Tìm kiếm sách..."
+    />
+    <button (click)="searchBooks()">Tìm kiếm</button>
+  </div>
+
+  <!-- Bảng danh sách sách -->
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tên sách</th>
+        <th>Tác giả</th>
+        <th>Giá</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of filteredBooks(); let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.price | currency : "VND" }}</td>
+        <td>
+          <button [routerLink]="['/admin/edit-book', book.id]">Sửa</button>
+          <button (click)="deleteBook(book.id)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Nút thêm sách -->
+  <button class="add-book-btn" (click)="openAddBookModal()">Thêm sách</button>
+</div>

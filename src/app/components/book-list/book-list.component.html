@@ -1,0 +1,27 @@
+<!-- Thanh tìm kiếm -->
+<input type="text" [(ngModel)]="searchTerm" placeholder="Tìm kiếm sách..." />
+
+<!-- Danh mục sách -->
+<div class="category-container">
+  <button
+    *ngFor="let category of categories()"
+    (click)="filterByCategory(category.id)"
+    [class.active]="category.id === selectedCategoryId()"
+  >
+    {{ category.name }}
+  </button>
+  <button (click)="filterByCategory(null)">Tất cả</button>
+</div>
+
+<!-- Danh sách sách -->
+<div class="book-list">
+  <div *ngFor="let book of filteredBooks()" class="book-item">
+    <img [src]="book.image" [alt]="book.title" class="book-image" />
+    <div class="book-info">
+      <h3>{{ book.title }}</h3>
+      <p>Tác giả: {{ book.author }}</p>
+      <p>Giá: {{ book.price | number }} VND</p>
+      <a [routerLink]="['/book', book.id]" class="btn">Xem chi tiết</a>
+    </div>
+  </div>
+</div>

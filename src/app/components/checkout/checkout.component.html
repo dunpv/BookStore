@@ -1,0 +1,5 @@
+<div *ngFor="let book of cart()">
+  <strong>{{ book.title }}</strong> - {{ book.price | number }} VND
+</div>
+<h3>Tổng tiền: {{ totalPrice() | number }} VND</h3>
+<button (click)="completePurchase()">Xác nhận thanh toán</button>
